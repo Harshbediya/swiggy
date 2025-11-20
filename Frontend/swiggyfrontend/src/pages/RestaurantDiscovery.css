@@ -1,0 +1,363 @@
+/* ==============================
+   RestaurantDiscovery.css
+   ============================== */
+
+.rd-container {
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+  color: #333;
+  min-height: 100vh;
+}
+
+.rd-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.rd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.rd-title {
+  font-size: 28px;
+  margin: 0;
+  color: #ff5200;
+}
+
+.rd-sub {
+  color: #777;
+  font-size: 14px;
+}
+
+.rd-header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+/* ===== SEARCH ===== */
+.rd-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rd-search input {
+  padding: 8px 12px 8px 32px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+.rd-search-icon {
+  position: absolute;
+  left: 8px;
+  color: #888;
+}
+
+.rd-membership {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ===== BANNER ===== */
+.rd-banner {
+  margin: 20px 0;
+  padding: 15px 20px;
+  background: #fff0e5;
+  border: 1px solid #ffd4b8;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.rd-main {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 20px;
+}
+
+/* ===== FILTERS ===== */
+.rd-filters {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rd-filters h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  color: #222;
+}
+
+.rd-chip {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rd-chip:hover {
+  background: #ffe0cc;
+}
+
+.rd-chip.active {
+  background: #ff5200;
+  color: #fff;
+}
+
+.rd-price,
+.rd-cuisines,
+.rd-dietary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.rd-dietary label {
+  font-size: 13px;
+}
+
+.rd-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* ===== RESULTS TOP ===== */
+.rd-resultsTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.rd-resultsTop select {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* ===== GRID ===== */
+.rd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+/* ===== RESTAURANT CARD ===== */
+.rd-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.rd-card:hover {
+  transform: translateY(-3px);
+}
+
+.rd-card-body {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.rd-thumb {
+  background: #f3f3f3;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.rd-card h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #222;
+}
+
+.rd-card p {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.rd-meta {
+  font-size: 12px;
+  color: #999;
+  margin: 5px 0;
+}
+
+.rd-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.rd-promo {
+  background: #ffe8d2;
+  color: #ff5200;
+  padding: 4px 8px;
+  font-size: 12px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  border-radius: 4px;
+}
+
+.rd-member {
+  background: #222;
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 6px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 4px;
+}
+
+.rd-value {
+  font-size: 12px;
+  color: green;
+  margin-top: 4px;
+}
+
+/* ===== EMPTY STATE ===== */
+.rd-empty {
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  color: #666;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ==============================
+   BUTTON STYLES
+   ============================== */
+
+.rd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.rd-btn:hover {
+  background-color: #f8f8f8;
+  border-color: #ccc;
+  transform: translateY(-1px);
+}
+
+.rd-btn:active {
+  transform: translateY(0);
+  background-color: #f2f2f2;
+}
+
+/* PRIMARY BUTTON */
+.rd-btn.primary {
+  background-color: #fc8019; /* Swiggy orange */
+  color: #fff;
+  border: 1.5px solid #fc8019;
+  box-shadow: 0 3px 6px rgba(252, 128, 25, 0.25);
+}
+
+.rd-btn.primary:hover {
+  background-color: #e9730f;
+  border-color: #e9730f;
+  box-shadow: 0 4px 8px rgba(252, 128, 25, 0.3);
+  transform: translateY(-2px);
+}
+
+.rd-btn.primary:active {
+  background-color: #d66a0d;
+  transform: translateY(0);
+}
+
+/* DISABLED BUTTON */
+.rd-btn:disabled {
+  background-color: #eee;
+  color: #aaa;
+  border-color: #ddd;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Animated pulse effect for promo or membership buttons */
+.rd-btn.primary.pulse {
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(252, 128, 25, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(252, 128, 25, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(252, 128, 25, 0); }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+@media (max-width: 900px) {
+  .rd-main {
+    grid-template-columns: 1fr;
+  }
+
+  .rd-filters {
+    order: 2;
+  }
+
+  .rd-resultsTop {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .rd-banner {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,406 @@
+/* Entire Home Container */
+.home {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #FF5200;
+  height: 110vh;
+}
+
+/* Hero Section */
+.hero {
+  background: #FF5200;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 0 0 25px 25px;
+}
+
+.hero h1 {
+  font-size: 2.3rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.hero h1 span {
+  font-style: italic;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.location-input,
+.search-input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 280px;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.search-input {
+  width: 350px;
+}
+
+
+
+/* Categories Section */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  /* margin: 50px 20px; */
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 360px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+  height: 430px;
+
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.category-card p {
+  margin: 5px 0 10px;
+  color: #777;
+}
+
+.offer {
+  display: inline-block;
+  background: #ff6f00;
+  color: white;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.category-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.restroheading{
+  font-size: 1.3rem;
+  margin-top:150px ;
+  font-weight: 500;
+  margin-left: 40px;
+}
+
+
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+
+.card-list .card-item {
+    background: #fff;
+    padding: 26px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+    list-style: none;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: border 0.5s ease;
+}
+
+.card-list .card-item:hover {
+    border: 2px solid #000;
+}
+
+.card-list .card-item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.card-list span {
+    display: inline-block;
+    background: #F7DFF5;
+    margin-top: 32px;
+    padding: 8px 15px;
+    font-size: 0.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.card-list .developer {
+    background-color: #F7DFF5; 
+    color: #B22485;
+}   
+
+.card-list .designer {
+    background-color: #d1e8ff;
+    color: #2968a8;
+}
+
+.card-list .editor {
+    background-color: #d6f8d6; 
+    color: #205c20;
+}
+
+.card-item h3 {
+    color: #000;
+    font-size: 1.438rem;
+    margin-top: 28px;
+    font-weight: 600;
+}
+
+.card-item .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-35deg);
+    height: 40px;
+    width: 40px;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-top: 40px;
+    transition: 0.2s ease;
+}
+
+.card-list .card-item:hover .arrow  {
+    background: #000;
+    color: #fff; 
+}
+
+@media (max-width: 1200px) {
+    .card-list .card-item {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .card-list {
+        margin: 0 auto;
+    }
+}
+/* Restaurant Discovery Section */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 0 40px;
+  margin-top: 40px;
+}
+
+.restaurant-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-6px);
+}
+
+.restaurant-img {
+  position: relative;
+}
+
+.restaurant-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.offer-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #ff6600;
+  color: #fff;
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.restaurant-info {
+  padding: 15px;
+}
+
+.restaurant-info h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.restaurant-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.restaurant-meta {
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  gap: 5px;
+}
+
+.see-more {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.see-more-btn {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.see-more-btn:hover {
+  background: #e05400;
+}
+
+/* === Animated Restaurant Discovery === */
+.discovery {
+  margin-top: 100px;
+  padding-bottom: 60px;
+}
+
+.restroheading {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.restroheading h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.restroheading p {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 0 40px;
+}
+
+.restaurant-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.restaurant-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-img {
+  position: relative;
+}
+
+.restaurant-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.offer-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: linear-gradient(90deg, #ff7b00, #ff5200);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.restaurant-info {
+  padding: 14px 18px;
+}
+
+.restaurant-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.restaurant-info p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.restaurant-meta {
+  font-size: 0.85rem;
+  color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.see-more {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.see-more-btn {
+  background: linear-gradient(90deg, #ff7b00, #ff5200);
+  color: white;
+  padding: 12px 26px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 82, 0, 0.4);
+}
+
+.see-more-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 82, 0, 0.5);
+}

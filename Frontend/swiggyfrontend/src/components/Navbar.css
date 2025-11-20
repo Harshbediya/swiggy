@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FF5200;  /* Swiggy orange */
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.2s;
+  margin-right: 30px;
+}
+
+.nav-links a:hover {
+  color: #ffd699; /* lighter hover */
+}
