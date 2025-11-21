@@ -249,7 +249,7 @@ export default function RestaurantDiscovery() {
                       </div>
 
                       <div className="rd-card-actions">
-                        <Link to="/menu" className="rd-btn">View Menu </Link>
+                        <Link to={`/menu/${r.id}`} className="rd-btn">View Menu </Link>
                         <button className="rd-btn primary">Order Now</button>
                       </div>
 
