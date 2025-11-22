@@ -1,0 +1,94 @@
+.tracking-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tracking-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.tracking-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.tracking-step.active {
+    opacity: 1;
+    color: #fc8019;
+}
+
+.step-icon {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    padding: 10px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.tracking-step.active .step-icon {
+    border-color: #fc8019;
+    background: #fff5ec;
+}
+
+.step-label {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.step-line {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+    z-index: 1;
+}
+
+.tracking-step.active .step-line {
+    background: #fc8019;
+}
+
+.tracking-step:last-child .step-line {
+    display: none;
+}
+
+.order-details {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-details h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.order-details ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.order-details li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-details li:last-child {
+    border-bottom: none;
+}

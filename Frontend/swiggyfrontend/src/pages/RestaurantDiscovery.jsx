@@ -1,24 +1,16 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./RestaurantDiscovery.css";
+import api from "../api";
 
 const CUISINES = ["Indian", "Chinese", "Italian", "Continental", "South Indian", "Desserts"];
 const DIETARY = ["Vegetarian", "Vegan", "Gluten-Free", "Egg-Free"];
 const PRICE_TIERS = ["₹", "₹₹", "₹₹₹"];
 
-const MOCK_RESTAURANTS = [
-  { id: 1, name: "Spice Junction", cuisine: "Indian", rating: 4.4, distanceKm: 1.2, priceTier: "₹", deliveryMins: 25, dietary: ["Vegetarian"], promotions: ["20% OFF"], isMemberExclusive: false, isValueMeal: true },
-  { id: 2, name: "Wok & Roll", cuisine: "Chinese", rating: 4.2, distanceKm: 3.3, priceTier: "₹₹", deliveryMins: 35, dietary: ["Egg-Free"], promotions: [], isMemberExclusive: true, isValueMeal: false },
-  { id: 3, name: "La Pasta", cuisine: "Italian", rating: 4.7, distanceKm: 2.0, priceTier: "₹₹₹", deliveryMins: 45, dietary: [], promotions: ["Free Dessert"], isMemberExclusive: true, isValueMeal: true },
-  { id: 4, name: "Dosa Delight", cuisine: "South Indian", rating: 4.1, distanceKm: 0.8, priceTier: "₹", deliveryMins: 18, dietary: ["Vegetarian"], promotions: [], isMemberExclusive: false, isValueMeal: false },
-  { id: 5, name: "Sweet Tooth", cuisine: "Desserts", rating: 4.6, distanceKm: 4.5, priceTier: "₹", deliveryMins: 40, dietary: ["Vegetarian", "Gluten-Free"], promotions: ["Buy 1 Get 1"], isMemberExclusive: false, isValueMeal: false },
-  { id: 6, name: "Tandoori House", cuisine: "Indian", rating: 4.3, distanceKm: 1.5, priceTier: "₹₹", deliveryMins: 30, dietary: ["Vegetarian"], promotions: ["10% OFF"], isMemberExclusive: false, isValueMeal: false },
-  { id: 7, name: "Urban Café", cuisine: "Continental", rating: 4.5, distanceKm: 2.8, priceTier: "₹₹", deliveryMins: 40, dietary: ["Vegan"], promotions: [], isMemberExclusive: true, isValueMeal: true },
-];
-
 export default function RestaurantDiscovery() {
+  const [restaurants, setRestaurants] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedCuisines, setSelectedCuisines] = useState(new Set());
   const [minRating, setMinRating] = useState(0);
@@ -30,6 +22,18 @@ export default function RestaurantDiscovery() {
   const [membershipOnly, setMembershipOnly] = useState(false);
   const [showValueMeals, setShowValueMeals] = useState(false);
 
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response = await api.get("/restaurants/");
+        setRestaurants(response.data);
+      } catch (error) {
+        console.error("Error fetching restaurants:", error);
+      }
+    };
+    fetchRestaurants();
+  }, []);
+
   const toggleSet = (set, setter, value) => {
     const next = new Set(set);
     next.has(value) ? next.delete(value) : next.add(value);
@@ -37,22 +41,24 @@ export default function RestaurantDiscovery() {
   };
 
   const filtered = useMemo(() => {
-    return MOCK_RESTAURANTS.filter((r) => {
+    return restaurants.filter((r) => {
       if (query && !r.name.toLowerCase().includes(query.toLowerCase())) return false;
       if (selectedCuisines.size && !selectedCuisines.has(r.cuisine)) return false;
       if (r.rating < minRating) return false;
-      if (r.distanceKm > maxDistance) return false;
-      if (priceTier.size && !priceTier.has(r.priceTier)) return false;
-      if (r.deliveryMins > deliveryMax) return false;
+      if (r.distance_km > maxDistance) return false;
+      if (priceTier.size && !priceTier.has(r.price_tier)) return false;
+      if (r.delivery_time_mins > deliveryMax) return false;
       if (selectedDietary.size) {
-        for (let d of selectedDietary) if (!r.dietary.includes(d)) return false;
+        // Assuming dietary_options is an array of strings
+        for (let d of selectedDietary) if (!r.dietary_options.includes(d)) return false;
       }
       if (showPromotionsOnly && (!r.promotions || r.promotions.length === 0)) return false;
-      if (membershipOnly && !r.isMemberExclusive) return false;
-      if (showValueMeals && !r.isValueMeal) return false;
+      if (membershipOnly && !r.is_member_exclusive) return false;
+      if (showValueMeals && !r.is_value_meal) return false;
       return true;
     });
   }, [
+    restaurants,
     query,
     selectedCuisines,
     minRating,
@@ -234,18 +240,18 @@ export default function RestaurantDiscovery() {
             <div className="rd-grid">
               {filtered.map((r) => (
                 <motion.article key={r.id} whileHover={{ translateY: -6 }} className="rd-card">
-                  {r.promotions.length > 0 && <div className="rd-promo">{r.promotions[0]}</div>}
-                  {r.isMemberExclusive && <div className="rd-member">Member</div>}
+                  {r.promotions && r.promotions.length > 0 && <div className="rd-promo">{r.promotions[0]}</div>}
+                  {r.is_member_exclusive && <div className="rd-member">Member</div>}
 
                   <div className="rd-card-body">
                     <div className="rd-thumb">Img</div>
                     <div>
                       <h4>{r.name}</h4>
                       <p>
-                        {r.cuisine} • {r.priceTier} • {r.distanceKm} km
+                        {r.cuisine} • {r.price_tier} • {r.distance_km} km
                       </p>
                       <div className="rd-meta">
-                        ⭐ {r.rating} • {r.deliveryMins} mins
+                        ⭐ {r.rating} • {r.delivery_time_mins} mins
                       </div>
 
                       <div className="rd-card-actions">
@@ -253,7 +259,7 @@ export default function RestaurantDiscovery() {
                         <button className="rd-btn primary">Order Now</button>
                       </div>
 
-                      {r.isValueMeal && <div className="rd-value">Value meal available</div>}
+                      {r.is_value_meal && <div className="rd-value">Value meal available</div>}
                     </div>
                   </div>
                 </motion.article>

@@ -16,27 +16,39 @@ import "./styles.css";
 
 import { setAuthToken } from "./api";
 import Signup from "./pages/Signup";
-function App() {
-  return (
-    <div className="app-container">
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/menu/:id" element={<Menu />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/RestaurantDiscovery" element={<RestaurantDiscovery />} />
-           <Route path="/menu" element={<MenuView />} />
-            <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+import { CartProvider } from "./context/CartContext";
+import OrderTracking from "./pages/OrderTracking";
 
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+function App() {
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthToken(token);
+    }
+  }, []);
+
+  return (
+    <CartProvider>
+      <div className="app-container">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/menu/:id" element={<Menu />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/RestaurantDiscovery" element={<RestaurantDiscovery />} />
+            <Route path="/menu" element={<MenuView />} />
+            <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+            <Route path="/orders/:id" element={<OrderTracking />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }
 
